@@ -1,0 +1,28 @@
+html,
+body {
+    height: 100%;
+}
+
+.wrap {
+    width: 100%;
+    height: 100%;
+    background: #fc0;
+
+
+    .title {
+        width: 100%;
+        height: 400px;
+        background: url('https://imgkr.cn-bj.ufileos.com/5a820626-482d-4c2c-94aa-6f77c4ff9e21.gif') 0 0 / 100% auto no-repeat;
+    }
+
+    .avatar {
+        width: 120px;
+        height: 120px;
+    }
+
+    .btn {
+        width: 101px;
+        height: 63px;
+        background: url('../actSweet520/assets/images/btn-back.png') 0 0 /100% auto no-repeat;
+    }
+}

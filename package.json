@@ -1,0 +1,51 @@
+{
+  "name": "mongoCool",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "webpack-dev-server --color --env=development --config ./config/webpack.dev.js --m",
+    "build": "webpack --color --env=production --config ./config/webpack.prod.js --m"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.11.0",
+    "@babel/plugin-transform-runtime": "^7.10.5",
+    "@babel/preset-env": "^7.11.0",
+    "autoprefixer": "^9.8.5",
+    "babel-loader": "^8.1.0",
+    "clean-webpack-plugin": "^3.0.0",
+    "css-loader": "^3.6.0",
+    "file-loader": "^6.0.0",
+    "glob": "^7.1.6",
+    "html-webpack-plugin": "^4.3.0",
+    "lib-flexible": "^0.3.2",
+    "mini-css-extract-plugin": "^0.9.0",
+    "node-sass": "^4.14.1",
+    "optimize-css-assets-webpack-plugin": "^5.0.3",
+    "postcss-loader": "^3.0.0",
+    "purgecss-webpack-plugin": "^2.3.0",
+    "px2rem-loader": "^0.1.9",
+    "raw-loader": "^4.0.1",
+    "sass-loader": "^9.0.2",
+    "style-loader": "^1.2.1",
+    "terser-webpack-plugin": "^2.2.0",
+    "thread-loader": "^2.1.3",
+    "url-loader": "^4.1.0",
+    "vconsole-webpack-plugin": "^1.5.1",
+    "vue-loader": "^15.9.3",
+    "vue-template-compiler": "^2.6.11",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0",
+    "webpack-merge": "^5.0.9"
+  },
+  "dependencies": {
+    "@babel/polyfill": "^7.10.4",
+    "axios": "^0.19.2",
+    "vue": "^2.6.11",
+    "vue-router": "^3.3.4"
+  }
+}
