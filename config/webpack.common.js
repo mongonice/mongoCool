@@ -192,7 +192,6 @@ module.exports = (env, argv) => {
             new VueLoaderPlugin(),
             new webpack.DefinePlugin(finalGlobals),
             new webpack.ProvidePlugin({
-                "utils": [path.resolve('.', 'src/__common/js/mi.util.js')],
                 "coreBus": [path.resolve('.', 'src/__common/js/eventBus.js'), 'default'],
                 "Vue": ['vue/dist/vue.runtime.esm.js', 'default'] //重点
             }),
