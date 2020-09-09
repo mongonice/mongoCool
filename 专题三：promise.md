@@ -282,24 +282,67 @@ class Promise {
 ```
 
 ## 八 实现静态方法all,全部成功才成功
+> 切记不能使用 **数组的长度** 来判断是否全部执行完，因为如果先给数组的第10项赋值arr[10] = 100, 那么数组的长度已经变为 11了，前面的10项都为空，那么直接拿长度去判断不靠谱，要使用 **计数** 的方式来判断
+
+```javascript
+
+class Promise {
+    
+    static all (promises) {
+
+        let total = promises.length;
+        // 判断是否是 promise实例，不能使用 data instanceof Promise， 因为万一 " class Promise {空}"
+        const isPromise = data => typeof data.then === 'function';
+        return new Promise((resolve, reject) => {
+            let resultArr = [];
+            let count = 0;
+            // 不一定按顺序来赋值，有可能是 arr[5] = 10 下一个是 arr[2] = 3...
+            const computedResultArr = (key, value) => {
+                resultArr[key] = value;
+                if (++count === total) {
+                    resolve(resultArr)
+                }
+            }
+            // 并发模式（使用for循环迭代执行） 和 串行模式 （前一个执行完的结果是下一个执行的参数）
+            for (let i = 0; i < total; i++) {
+
+                let item = promises[i];
+
+                if (isPromise(item)) {
+                    item.then((data) => {
+                        computedResultArr(i, data)
+                    }, reject)
+                } else {
+                    // 普通值
+                    computedResultArr(i, item)
+                }
+            }
+        })
+    }
+}
+```
+
+## 九 实现静态方法 race，谁先执行完，就使用谁的
 
 ```javascript
 
 class Promise {
 
-    static all (promiseArr) {
-
-        promiseArr.forEach( (item, index) => {
-            if (!!item.then) {
-                item.then(() => {
-
-                }, err => {
-
-                })
-            }
-        })
+    static race (promises) {
+        const isPromise = data => typeof data.then === 'function';
         return new Promise((resolve, reject) => {
 
+            for (let i = 0; i < promises.length; i++) {
+
+                let item = promises[i];
+
+                if (isPromise(item)) {
+                    item.then(resolve,reject)
+                } else {
+                    // 普通值
+                    resolve(item)
+                }
+            }
         })
     }
 }
