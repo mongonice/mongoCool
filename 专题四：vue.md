@@ -17,4 +17,37 @@
 ### 4.1 vuex原理
 
 ## 5 虚拟dom
+> `虚拟dom`：是用对象来描述dom节点的, `ast语法树`： 是用对象来描述原生语法的
+
+```html
+<div id="app">
+    <p>hello</p>
+</div>
+```
+``` javascript
+/* ast语法树, 跟虚拟dom无关 */
+/* type: 1-标签元素  3-文本 */
+let root = {
+    tag: 'div',
+    attrs: [{name: 'id', value: 'app'}],
+    parent: null,
+    type: 1, 
+    children: [
+        {
+            tag: 'p',
+            attrs: [],
+            parent: root,
+            type: 1,
+            children: [{
+                text: 'hello',
+                type: 3
+            }]
+        }
+    ]
+}
+```
+
 ### 5.1 domdiff
+
+## 6 属性el 、 template、 render渲染优先级
+> 默认会先找render方法，没有render会采用tempalte，没有template最后才会采用el内容
